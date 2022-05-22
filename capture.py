@@ -43,7 +43,7 @@ if __name__ == '__main__':
     parser.add_argument("--dt", required=True)
     parser.add_argument("--hour", required=True)
     parser.add_argument("--min", required=True)
-    parser.add_argument("--rot", choices=[90, 180, 270])
+    parser.add_argument("--rot", choices=["90", "180", "270"])
 
     args = parser.parse_args()
 
