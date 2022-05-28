@@ -10,9 +10,9 @@ def main(dt, hour, min, rotation=None):
     Example Usage:
 
     Python capture.py \
-        --dt ${date -I} \
-        --hour ${date "+%H"} \
-        --min ${date "+%M"}
+        --dt $(date -I) \
+        --hour $(date "+%H") \
+        --min $(date "+%M")
 
     """
 
@@ -26,6 +26,9 @@ def main(dt, hour, min, rotation=None):
     if rotation:
         """-rot, --rotation	: Set image rotation (0, 90, 180, or 270)"""
         cam_command.extend(['-rot', f'{rotation}'])
+
+    if int(hour) > 19 or int(hour) < 5:
+        cam_command.extend(['-ex', 'night', '-awb', 'shade'])
 
     # write to /path/with/dt/hour/min hive partitions
     makedirs(path_head)
