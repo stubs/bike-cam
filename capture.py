@@ -1,4 +1,5 @@
 from argparse import ArgumentParser
+from datetime import datetime
 from os import environ, makedirs
 from shutil import rmtree
 import subprocess
@@ -40,11 +41,15 @@ def main(dt, hour, min, rotation=None):
 
 if __name__ == '__main__':
     parser = ArgumentParser()
-    parser.add_argument("--dt", required=True)
-    parser.add_argument("--hour", required=True)
-    parser.add_argument("--min", required=True)
+    parser.add_argument("--dt")
+    parser.add_argument("--hour")
+    parser.add_argument("--min")
     parser.add_argument("--rot", choices=["90", "180", "270"])
 
     args = parser.parse_args()
+
+    if not all([args.dt, args.hour, args.min]):
+        args.dt, time = datetime.now().isoformat().split('T')
+        args.hour, args.min = time.split(':')[:2]
 
     main(args.dt, args.hour, args.min, args.rot)
