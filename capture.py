@@ -21,7 +21,7 @@ def main(dt, hour, min, rotation=None):
     gcs_path = 'gs://' + path_head.replace(f'{environ["HOME"]}/Pictures/', '')
     file_path =f'{path_head}/photo.jpg'
     cam_command = f'raspistill -o {file_path}'.split()
-    sync_cmd = f'gsutil -m rsync {path_head} {gcs_path}'.split()
+    sync_cmd = f'{environ["HOME"]}/bike-cam/bin/gsutil -m rsync {path_head} {gcs_path}'.split()
 
     if rotation:
         """-rot, --rotation	: Set image rotation (0, 90, 180, or 270)"""
