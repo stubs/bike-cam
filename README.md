@@ -1,4 +1,6 @@
 # Bike-Cam
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+
 
 A quick helper utility that I ran as a cron job on my local Raspberry Pi Zero W.
 
